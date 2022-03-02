@@ -47,9 +47,6 @@ input.onSound(DetectedSound.Loud, function () {
 })
 radio.onReceivedString(function (receivedString) {
     signal = radio.receivedPacket(RadioPacketProperty.SignalStrength)
-    for (let index = 0; index < 2; index++) {
-        basic.showNumber(signal)
-    }
     basic.pause(randint(100, 500))
     radio.sendNumber(signal)
 })
@@ -76,6 +73,7 @@ let initialize = 0
 initialize = 0
 lead_cutebot = 0
 radio.setGroup(1)
+input.setSoundThreshold(SoundThreshold.Loud, 128)
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A) || input.buttonIsPressed(Button.B)) {
         initialize = 1
